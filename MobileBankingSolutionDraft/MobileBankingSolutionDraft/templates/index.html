@@ -78,17 +78,18 @@
 <script>
     // Initialize Firebase
     var config = {
-        apiKey: "AIzaSyDKgCh5vwQBiNSjxS2YHCGCLZfr0YlAvgA",
-        authDomain: "ez-ebanking-test.firebaseapp.com",
-        databaseURL: "https://ez-ebanking-test.firebaseio.com",
-        projectId: "ez-ebanking-test",
-        storageBucket: "",
-        messagingSenderId: "546739130662"
+        apiKey: "AIzaSyAfFE2Kr7u_vyq_oSSrb_9gdwJ_xiFXpLE",
+        authDomain: "design-thinking-assignment.firebaseapp.com",
+        databaseURL: "https://design-thinking-assignment.firebaseio.com",
+        projectId: "design-thinking-assignment",
+        storageBucket: "design-thinking-assignment.appspot.com",
+        messagingSenderId: "758596598031"
     };
     firebase.initializeApp(config);
 
+
     var bank_bal_1 = document.getElementById('bank_bal_1');
-    var dbRef_1 = firebase.database().ref().child('savings');
+    var dbRef_1 = firebase.database().ref().child('Savings');
     dbRef_1.on('value', snap => bank_bal_1.innerText = snap.val());
 
     var bank_bal_2 = document.getElementById('bank_bal_2');
