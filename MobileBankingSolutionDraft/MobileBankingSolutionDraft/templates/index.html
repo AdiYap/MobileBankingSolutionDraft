@@ -61,16 +61,7 @@
 
         <table align="center" style="border:1px solid black; background-color: purple; text-align:left; color:gold">
             <tr><td id="record_date_1" style="border-right:1px solid black; padding-right:10px"></td><td id="record_money_1" style="padding-left:30px; padding-right:30px"></td></tr>
-            <tr><td style="border-right:1px solid black; padding-right:10px">01/03/2016: </td><td style="padding-left:30px; padding-right:30px"> Deposited $250,000</td></tr>
-            <tr><td style="border-right:1px solid black; padding-right:10px">24/05/2016 </td><td style="padding-left:30px; padding-right:30px"> Deposited $250,000</td></tr>
-            <tr><td style="border-right:1px solid black; padding-right:10px">04/06/2016: </td><td style="padding-left:30px; padding-right:30px"> Withdrew $150,000</td></tr>
-            <tr><td style="border-right:1px solid black; padding-right:10px">18/09/2016: </td><td style="padding-left:30px; padding-right:30px"> Withdrew $50,000</td></tr>
-            <tr><td style="border-right:1px solid black; padding-right:10px">24/10/2016 </td><td style="padding-left:30px; padding-right:30px"> Deposited $750,000</td></tr>
-            <tr><td style="border-right:1px solid black; padding-right:10px">11/02/2017: </td><td style="padding-left:30px; padding-right:30px"> Deposited $300,000</td></tr>
-            <tr><td style="border-right:1px solid black; padding-right:10px">30/04/2017 </td><td style="padding-left:30px; padding-right:30px"> Withdrew $150,000</td></tr>
-            <tr><td style="border-right:1px solid black; padding-right:10px">07/06/2017: </td><td style="padding-left:30px; padding-right:30px"> Deposited $250,000</td></tr>
-            <tr><td style="border-right:1px solid black; padding-right:10px">23/09/2017: </td><td style="padding-left:30px; padding-right:30px"> Deposited $250,000</td></tr>
-            <tr><td style="border-right:1px solid black; padding-right:10px">08/10/2017: </td><td style="padding-left:30px; padding-right:30px"> Withdrew $350,000</td></tr>
+            <tr><td id="record_date_2" style="border-right:1px solid black; padding-right:10px"></td><td id="record_money_2" style="padding-left:30px; padding-right:30px"></td></tr>
         </table>
     </div>
 </div>
@@ -97,12 +88,20 @@
     dbRef_2.on('value', snap => bank_bal_2.innerText = snap.val());
 
     var record_money_1 = document.getElementById('record_money_1');
-    var dbRef_3 = firebase.database().ref().child('record_money');
+    var dbRef_3 = firebase.database().ref().child('record_money').child('money_1');
     dbRef_3.on('value', snap => record_money_1.innerText = snap.val());
 
     var record_date_1 = document.getElementById('record_date_1');
-    var dbRef_4 = firebase.database().ref().child('record_date');
+    var dbRef_4 = firebase.database().ref().child('record_date').child('date_1');
     dbRef_4.on('value', snap => record_date_1.innerText = snap.val());
+
+    var record_money_2 = document.getElementById('record_money_2');
+    var dbRef_5 = firebase.database().ref().child('record_money').child('money_2');
+    dbRef_5.on('value', snap => record_money_2.innerText = snap.val());
+
+    var record_date_2 = document.getElementById('record_date_2');
+    var dbRef_6 = firebase.database().ref().child('record_date').child('date_2');
+    dbRef_6.on('value', snap => record_date_2.innerText = snap.val());
 
 </script>
 
