@@ -60,6 +60,7 @@
         <h2>Transaction History</h2>
 
         <table align="center" style="border:1px solid black; background-color: purple; text-align:left; color:gold">
+            <tr><td id="record_date_1" style="border-right:1px solid black; padding-right:10px"></td><td id="record_money_1" style="padding-left:30px; padding-right:30px"></td></tr>
             <tr><td style="border-right:1px solid black; padding-right:10px">01/03/2016: </td><td style="padding-left:30px; padding-right:30px"> Deposited $250,000</td></tr>
             <tr><td style="border-right:1px solid black; padding-right:10px">24/05/2016 </td><td style="padding-left:30px; padding-right:30px"> Deposited $250,000</td></tr>
             <tr><td style="border-right:1px solid black; padding-right:10px">04/06/2016: </td><td style="padding-left:30px; padding-right:30px"> Withdrew $150,000</td></tr>
@@ -94,6 +95,15 @@
     var bank_bal_2 = document.getElementById('bank_bal_2');
     var dbRef_2 = firebase.database().ref().child('current');
     dbRef_2.on('value', snap => bank_bal_2.innerText = snap.val());
+
+    var record_money_1 = document.getElementById('record_money_1');
+    var dbRef_3 = firebase.database().ref().child('record_money');
+    dbRef_3.on('value', snap => record_money_1.innerText = snap.val());
+
+    var record_date_1 = document.getElementById('record_date_1');
+    var dbRef_4 = firebase.database().ref().child('record_date');
+    dbRef_4.on('value', snap => record_date_1.innerText = snap.val());
+
 </script>
 
 {% endblock %}
