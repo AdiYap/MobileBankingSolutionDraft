@@ -22,6 +22,8 @@
 <table align="center">
     <tr><td><b>Your Bank: </b></td><td style="padding-left:10px"> United Overseas Bank</td></tr>
     <tr><td><b>Savings Account: </b></td><td id="bank_bal_1" style="text-align:center; font-size: 24px; font-weight: bold"></td></tr>
+    <tr><td><b>Current Account: </b></td><td id="bank_bal_2" style="text-align:center; font-size: 24px; font-weight: bold"></td></tr>
+    
 </table>
 <hr />
 
@@ -29,33 +31,45 @@
 <table align="center">
     <tr><td><b>Bill Number: </b></td><td style="padding-left:10px"><input type="text" required id="bill_no" /></td></tr>
     <tr><td style="padding: 10px"></td></tr>
-    <tr><td><b>Amount Payable: </b></td><td style="padding-left:10px"> $XXX.XX</td></tr>
+    <tr><td><b>Amount Payable: </b></td><td style="padding-left:10px"> $100.00</td></tr>
     <tr><td><b>Payment Due: </b></td><td style="padding-left:10px"> 17/12/2017</td></tr>
+
+
 </table>
 
 <p style="padding:10px"></p>
-<p style="text-align:center"><input type="submit" value="Confirm" /></p>
+<p style="text-align:center"><button id="confirmButton" onclick="payBill(100)">Confirm</button></p>
+
 
 <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
 <script>
     // Initialize Firebase
     var config = {
-        apiKey: "AIzaSyDKgCh5vwQBiNSjxS2YHCGCLZfr0YlAvgA",
-        authDomain: "ez-ebanking-test.firebaseapp.com",
-        databaseURL: "https://ez-ebanking-test.firebaseio.com",
-        projectId: "ez-ebanking-test",
-        storageBucket: "",
-        messagingSenderId: "546739130662"
+        apiKey: "AIzaSyAfFE2Kr7u_vyq_oSSrb_9gdwJ_xiFXpLE",
+        authDomain: "design-thinking-assignment.firebaseapp.com",
+        databaseURL: "https://design-thinking-assignment.firebaseio.com",
+        projectId: "design-thinking-assignment",
+        storageBucket: "design-thinking-assignment.appspot.com",
+        messagingSenderId: "758596598031"
     };
     firebase.initializeApp(config);
 
     var bank_bal_1 = document.getElementById('bank_bal_1');
-    var dbRef_1 = firebase.database().ref().child('savings');
+    var dbRef_1 = firebase.database().ref('details').child('Savings');
     dbRef_1.on('value', snap => bank_bal_1.innerText = snap.val());
 
     var bank_bal_2 = document.getElementById('bank_bal_2');
-    var dbRef_2 = firebase.database().ref().child('current');
+    var dbRef_2 = firebase.database().ref('details').child('current');
     dbRef_2.on('value', snap => bank_bal_2.innerText = snap.val());
+
+    function payBill(amount) {
+        var oldAmount = bank_bal_1.innerText;
+        var newAmount = oldAmount - amount;
+        
+        firebase.database().ref().child("details").update({
+            "Savings": newAmount
+        });
+    }
 
 </script>
 

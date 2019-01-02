@@ -89,12 +89,16 @@
 
 
     var bank_bal_1 = document.getElementById('bank_bal_1');
-    var dbRef_1 = firebase.database().ref().child('Savings');
+    var dbRef_1 = firebase.database().ref("details").child('Savings');
     dbRef_1.on('value', snap => bank_bal_1.innerText = snap.val());
 
     var bank_bal_2 = document.getElementById('bank_bal_2');
-    var dbRef_2 = firebase.database().ref().child('current');
+    var dbRef_2 = firebase.database().ref("details").child('current');
     dbRef_2.on('value', snap => bank_bal_2.innerText = snap.val());
+
+    
+    
+    
 
 </script>
 
