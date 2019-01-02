@@ -34,7 +34,7 @@
 </table>
 
 <p style="padding:10px"></p>
-<p style="text-align:center"><button id="confirmButton" onclick="paybills(100)">Confirm</button></p>
+<p style="text-align:center"><button id="confirmButton" onclick="paybills()">Confirm</button></p>
 
 <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
 <script>
@@ -74,8 +74,9 @@
     dbRef_6.on('value', snap => record_date_2.innerText = snap.val());
 
 
-    function paybills(bill)
+    function paybills()
     {
+        var bill = document.getElementById('bill_no').value;
         var balance = bank_bal_1.innerText - bill
 
         firebase.database().ref().update({
