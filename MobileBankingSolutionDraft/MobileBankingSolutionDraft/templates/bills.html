@@ -34,7 +34,7 @@
 </table>
 
 <p style="padding:10px"></p>
-<p style="text-align:center"><input type="submit" value="Confirm" /></p>
+<p style="text-align:center"><button id="confirmButton" onclick="paybills(100)">Confirm</button></p>
 
 <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
 <script>
@@ -48,7 +48,7 @@
         messagingSenderId: "758596598031"
     };
     firebase.initializeApp(config);
-
+    
     var bank_bal_1 = document.getElementById('bank_bal_1');
     var dbRef_1 = firebase.database().ref().child('Savings');
     dbRef_1.on('value', snap => bank_bal_1.innerText = snap.val());
@@ -72,6 +72,17 @@
     var record_date_2 = document.getElementById('record_date_2');
     var dbRef_6 = firebase.database().ref().child('record_date').child('date_2');
     dbRef_6.on('value', snap => record_date_2.innerText = snap.val());
+
+
+    function paybills(bill)
+    {
+        var balance = bank_bal_1.innerText - bill
+
+        firebase.database().ref().update({
+            "Savings": balance
+        });
+    }
+
 </script>
 
     {% endblock %}
