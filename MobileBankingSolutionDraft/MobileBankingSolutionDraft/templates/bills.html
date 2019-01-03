@@ -57,6 +57,15 @@
     var dbRef_2 = firebase.database().ref().child('current');
     dbRef_2.on('value', snap => bank_bal_2.innerText = snap.val());
 
+    // transaction history database
+    var transaction_amount = document.getElementById('transaction_history');
+    var dbRef_3 = firebase.database().ref().child('transaction').child('amount');
+    dbRef_3.on('value', snap => amount.innerText = snap.val());
+
+    var transaction_date = document.getElementById('transaction_history');
+    var dbRef_4 = firebase.database().ref().child('transaction').child('date');
+    dbRef_4.on('value', snap => date.innerText = snap.val());
+
 </script>
 
     {% endblock %}
