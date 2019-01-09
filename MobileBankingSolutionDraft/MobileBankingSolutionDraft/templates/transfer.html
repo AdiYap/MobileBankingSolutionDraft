@@ -56,30 +56,27 @@
     var dbRef_2 = firebase.database().ref().child('current');
     dbRef_2.on('value', snap => bank_bal_2.innerText = snap.val());
 
-    var record_money_1 = document.getElementById('record_money_1');
-    var dbRef_3 = firebase.database().ref().child('record_money').child('money_1');
-    dbRef_3.on('value', snap => record_money_1.innerText = snap.val());
-
-    var record_date_1 = document.getElementById('record_date_1');
-    var dbRef_4 = firebase.database().ref().child('record_date').child('date_1');
-    dbRef_4.on('value', snap => record_date_1.innerText = snap.val());
-
-    var record_money_2 = document.getElementById('record_money_2');
-    var dbRef_5 = firebase.database().ref().child('record_money').child('money_2');
-    dbRef_5.on('value', snap => record_money_2.innerText = snap.val());
-
-    var record_date_2 = document.getElementById('record_date_2');
-    var dbRef_6 = firebase.database().ref().child('record_date').child('date_2');
-    dbRef_6.on('value', snap => record_date_2.innerText = snap.val());
-
     function transfer() {
+        // Used for transfers
         var tranfer = document.getElementById('amount_to_pay').value;
         var balance = bank_bal_1.innerText - tranfer
-
+        // Used for transfers
         firebase.database().ref().update({
             "Savings": balance
         });
 
+        var date = Date();
+        var type = "Transfer"
+        addrecords(date, type, tranfer)
+
+    }
+
+    function addrecords(date, type, amount) {
+        firebase.database().ref('test_transaction/').push({
+            date,
+            type,
+            amount,
+        });
     }
 
 </script>
