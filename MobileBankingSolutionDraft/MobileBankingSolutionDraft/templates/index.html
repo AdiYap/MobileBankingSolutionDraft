@@ -49,57 +49,68 @@
 
         <hr style="width:50px" />
         <p>Savings Account: </p>
-        <table align="center"><tr><td id="acc-amt">$</td><td id="bank_bal_1" style="text-align:center; font-size: 24px; font-weight: bold"></td></tr></table>
+        <table align="center"><tr><td id="acc-amt">$</td><td id="bank_bal_1" style="text-align:center; font-size: 24px; font-weight:bold"></td></tr></table>
         <p style="padding:10px"></p>
         <p>Current Account: </p>
-        <table align="center"><tr><td id="acc-amt">$</td><td id="bank_bal_2" style="text-align:center; font-size: 24px; font-weight: bold"></td></tr></table>
+        <table align="center"><tr><td id="acc-amt">$</td><td id="bank_bal_2" style="text-align:center; font-size: 24px; font-weight:bold"></td></tr></table>
 
-        <hr style="border-top:2px solid rebeccapurple" />
+        <hr style="..." />
     </div>
     <div style="text-align:center">
         <h2>Transaction History</h2>
 
-        <table align="center" style="border:1px solid black; background-color: purple; text-align:left; color:gold">
-            <tr><td id="transacted_date" style="border-right:1px solid black; padding-right:10px"></td><td id="transacted_amount" style="padding-left:30px; padding-right:30px"></td></tr>
+        <table align="center" id="transaction-table" style="border:1px solid black; background-color: purple; text-align:left; color:gold">
+{#            <tr><td id="transacted_date" style="border-right:1px solid black; padding-right:10px"></td><td id="transacted_amount" style="padding-left:30px; padding-right:30px"></td></tr>#}
         </table>
+
+
     </div>
 </div>
 
-<script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.7.2/firebase.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+{#<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>#}
 <script>
     // Initialize Firebase
     var config = {
-        apiKey: "AIzaSyDKgCh5vwQBiNSjxS2YHCGCLZfr0YlAvgA",
-        authDomain: "ez-ebanking-test.firebaseapp.com",
-        databaseURL: "https://ez-ebanking-test.firebaseio.com",
-        projectId: "ez-ebanking-test",
-        storageBucket: "",
-        messagingSenderId: "546739130662"
+        apiKey: "AIzaSyAfFE2Kr7u_vyq_oSSrb_9gdwJ_xiFXpLE",
+        authDomain: "design-thinking-assignment.firebaseapp.com",
+        databaseURL: "https://design-thinking-assignment.firebaseio.com",
+        projectId: "design-thinking-assignment",
+        storageBucket: "design-thinking-assignment.appspot.com",
+        messagingSenderId: "758596598031"
     };
     firebase.initializeApp(config);
 
     var bank_bal_1 = document.getElementById('bank_bal_1');
-    var dbRef_1 = firebase.database().ref().child('savings');
+    var dbRef_1 = firebase.database().ref("details").child('savings');
     dbRef_1.on('value', snap => bank_bal_1.innerText = snap.val());
 
     var bank_bal_2 = document.getElementById('bank_bal_2');
-    var dbRef_2 = firebase.database().ref().child('current');
+    var dbRef_2 = firebase.database().ref("details").child('current');
     dbRef_2.on('value', snap => bank_bal_2.innerText = snap.val());
 
-    // transaction history database
-    var transaction_amount = document.getElementById('transaction_history');
-    var dbRef_3 = firebase.database().ref().child('transaction').child('amount');
-    dbRef_3.on('value', snap => amount.innerText = snap.val());
+    // transaction history table link to firebase database
+        console.log('transactionhistory')
+        transaction_history = firebase.database().ref('transaction_history').once('value').then(snapshot => {
+            console.log('snapshot.val()')
+            console.log()
 
-    var transaction_date = document.getElementById('transaction_history');
-    var dbRef_4 = firebase.database().ref().child('transaction').child('date');
-    dbRef_4.on('value', snap => date.innerText = snap.val());
+            transaction_records = snapshot.val();
 
-    function updateTransactionHistory() {
-        var getTransactionDate = firebase.database().ref('transaction_history').child('transaction').child('date');
-        var getTransactionAmount = firebase.database().ref('transaction_history').child('transaction').child('date');
-        var
-    }
+            Object.keys(transaction_records).forEach(key => {
+                console.log(transaction_records[key])
+
+                table_row = '<tr><td>' + transaction_records[key].amount + '<td><td>' + transaction_records[key].date +
+                            '</td>';
+
+                $('#transaction-table').append(table_row)
+            })
+        })
+
+
+        console.log($('#transaction-table'))
+    {#updateTransactionHistory()#}
 
 </script>
 
