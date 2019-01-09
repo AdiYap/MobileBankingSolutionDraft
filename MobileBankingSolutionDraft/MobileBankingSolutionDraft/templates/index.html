@@ -90,7 +90,7 @@
     var dbRef_2 = firebase.database().ref("details").child('current');
     dbRef_2.on('value', snap => bank_bal_2.innerText = snap.val());
 
-    // transaction history table link to firebase database
+    // transaction history table link to Firebase database
         console.log('transactionhistory')
         transaction_history = firebase.database().ref('transaction_history').once('value').then(snapshot => {
             console.log('snapshot.val()')
