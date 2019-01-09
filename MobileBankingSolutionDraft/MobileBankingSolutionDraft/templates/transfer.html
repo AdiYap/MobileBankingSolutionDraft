@@ -71,7 +71,9 @@
 
     }
 
-    function addrecords(date, type, amount) {
+    function addrecords(date, type, amount)
+    {
+        amount = "$" + amount
         firebase.database().ref('test_transaction/').push({
             date,
             type,
