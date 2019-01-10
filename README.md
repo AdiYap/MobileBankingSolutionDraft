@@ -92,6 +92,8 @@ Language Options (implmented on all pages)
 Located just under the purple description box for each page is a Google Translate dropdown list, from which a user may
 select the language displayed. The script for it is as follows:
 
+----------------------------------------------------------
+
 <script type="text/javascript">
     function googleTranslateElementInit() {
         new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
@@ -100,3 +102,4 @@ select the language displayed. The script for it is as follows:
 
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
+----------------------------------------------------------
