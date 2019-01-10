@@ -101,6 +101,7 @@
             Object.keys(transaction_records).forEach(key => {
                 console.log(transaction_records[key])
 
+                // transacion history details for each row
                 table_row = '<tr><td>' + transaction_records[key].amount + '<td><td>' + transaction_records[key].date.slice(0,15) +
                             '</td>';
 
