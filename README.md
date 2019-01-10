@@ -7,7 +7,8 @@ Each time a user pays a bill or does a transfer, the amount paid is accurately r
 action itself is recorded with the timestamp, amount paid and the type of transaction (Bills and Transfer are the
 only two categories as of yet)
 
-The backend database used in this app is hosted on Firebase. The implementation code is as follows:
+The backend database used in this app is hosted on Firebase. The implementation code for the Firebase database
+is as follows:
 
 --------------------------------------------------------------------------------------------------------------------
 <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase.js"></script>
@@ -26,9 +27,20 @@ The backend database used in this app is hosted on Firebase. The implementation 
 
 --------------------------------------------------------------------------------------------------------------------
 
-The name of the project on Firebase is: Design thinking assignment. The home page of the app is "index.html". You 
-can return to it at anytime by clicking on "EZ-eBanking" at the top left of the screen, or on "Main Menu", if you 
-are on one of the other two pages.
+The name of the project on Firebase is: Design thinking assignment. The Python Flask framework used to create it is
+largely unchanged from the default framework provided on Microsoft Visual Studio 2017, with only the "views.py" file
+being altered. Running the app on your local machine may require configuring a new python environment first.
+
+All of the front-end UI was created by modifying the html files located in the "templates" folder, located in
+"MobileBankingSolutionDraft". There are only four:
+
+- index.html
+- bills.html
+- transfer.html
+- layout.html
+
+The home page of the app is "index.html". You can return to it at anytime by clicking on "EZ-eBanking" at the top left
+of the screen, or on "Main Menu", if you are on one of the other two pages.
 
 To test the app, you may perform a bill payment and/or bank transfer. To do this, click on either "Pay a Bill", or
 "Arrange a Bank transfer".
@@ -40,6 +52,10 @@ Pay a Bill (bills.html)
 This page has just one text field; this is where you enter the amount you wish to pay. The user's bank balance is
 conveniently displayed just above it, marked "Savings account:". To test that the code is working, simply input an
 amount in the textfield, then click "Confirm". You should see the amount deducted from the bank balance accordingly.
+
+*Note: The tabulation of the new bank balance after deducting the payment amount, as well as the recording of the 
+timestamp and transaction type in database, is performed using the function linked to the "Confirm" button. In this
+case, the function is named "paybills()", which itself will call another function called "addrecords()".
 
 
 ----------------------------------------------------------
@@ -53,6 +69,10 @@ Similarly to the Pay a Bill page, simply enter an amount into the "Amount to Pay
 You should see the amount deducted from the bank balance.
 
 
+*Note: The tabulation of the new bank balance after deducting the payment amount, as well as the recording of the 
+timestamp and transaction type in database, is performed using the function linked to the "Confirm" button. In this
+case, the function is named "transfers()", which itself will call another function called "addrecords()".
+
 
 ----------------------------------------------------------
 Transaction history (in home page; home.html)
@@ -60,4 +80,7 @@ Transaction history (in home page; home.html)
 
 The table displaying the transaction history is located at the bottom of the home page. All actions performed with
 this app should accurately reflect there.
+
+
+----------------------------------------------------------
 
