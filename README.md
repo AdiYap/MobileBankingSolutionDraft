@@ -39,6 +39,9 @@ All of the front-end UI was created by modifying the html files located in the "
 - transfer.html
 - layout.html
 
+The implementation code shown above was inserted into the bottom section of the three main html files (index,
+bills and transfer). Javascript was included into the code to provide functionality to each of the pages.
+
 The home page of the app is "index.html". You can return to it at anytime by clicking on "EZ-eBanking" at the top left
 of the screen, or on "Main Menu", if you are on one of the other two pages.
 
