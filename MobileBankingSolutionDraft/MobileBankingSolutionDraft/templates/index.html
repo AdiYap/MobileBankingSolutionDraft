@@ -101,7 +101,7 @@
             Object.keys(transaction_records).forEach(key => {
                 console.log(transaction_records[key])
 
-                table_row = '<tr><td>' + transaction_records[key].amount + '<td><td>' + transaction_records[key].date +
+                table_row = '<tr><td>' + transaction_records[key].amount + '<td><td>' + transaction_records[key].date.slice(0,15) +
                             '</td>';
 
                 $('#transaction-table').append(table_row)
