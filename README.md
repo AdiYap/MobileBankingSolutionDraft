@@ -9,6 +9,7 @@ only two categories as of yet)
 
 The backend database used in this app is hosted on Firebase. The implementation code is as follows:
 
+--------------------------------------------------------------------------------------------------------------------
 <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase.js"></script>
 <script>
   // Initialize Firebase
@@ -23,7 +24,7 @@ The backend database used in this app is hosted on Firebase. The implementation 
   firebase.initializeApp(config);
 </script>
 
-
+--------------------------------------------------------------------------------------------------------------------
 
 The name of the project on Firebase is: Design thinking assignment. The home page of the app is "index.html". You 
 can return to it at anytime by clicking on "EZ-eBanking" at the top left of the screen, or on "Main Menu", if you 
